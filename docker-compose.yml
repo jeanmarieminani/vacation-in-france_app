@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  neo4j:
+    build:
+      context: .
+      dockerfile: neo4j_DB/Dockerfile
+    container_name: neo4j_vacationFrance_DB
+    ports:
+      - "8383:7474"  # HTTP interface
+      - "8989:7687"  # Bolt Protocol
+    environment:
+      - NEO4J_URI=${NEO4J_URI}
+      - NEO4J_USER=${NEO4J_USER}
+      - NEO4J_PASSWORD=${NEO4J_PASSWORD}
+    volumes:
+      - neo4j_data:/data    # Persist data
+      - neo4j_logs:/logs    # Persist logs
+      - ./neo4j_import:/import  # Import directory
+      - neo4j_plugins:/plugins   # Plugins directory
+      - ./conf:/conf  # Mount the entire conf directory
+
+volumes:
+  neo4j_data:
+    driver: local
+  neo4j_logs:
+    driver: local
+  neo4j_import:
+    driver: local
+  neo4j_plugins:
+    driver: local
+
