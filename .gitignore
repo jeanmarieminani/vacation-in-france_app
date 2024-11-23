@@ -1,8 +1,34 @@
+# Python specific ignores
 __pycache__/
 *.py[cod]
+
+# Environment variables
 .env
-venv/
-.venv
-.idea/
-.vscode/
+--env-file
+
+# Neo4j configuration file
+neo4j.conf
+neo4j_DB/neo4j.conf
+
+# Log files
 *.log
+
+# Conf files & python virtual environment
+conf/
+france_env/
+venv/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# System files (Mac)
+.DS_Store
+
+# General IDE ignores (example for VSCode)
+.vscode/
+.idea/
+
+# Ignore specific untracked files
+--name
+-p
+
